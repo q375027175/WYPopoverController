@@ -1776,6 +1776,9 @@ static WYPopoverTheme *defaultTheme_ = nil;
 
   if (!_inView) {
     _inView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
+    if ([UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController) {
+        _inView = [UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController.view;
+    }
     if (CGRectIsEmpty(_rect)) {
       _rect = CGRectMake((int)_inView.bounds.size.width / 2 - 5, (int)_inView.bounds.size.height / 2 - 5, 10, 10);
     }
